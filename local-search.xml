@@ -34,7 +34,7 @@
     <link href="/2023/02/26/%E4%BA%91%E4%B8%8A%E5%AE%B9%E7%81%BE%E4%BA%A4%E4%BB%98/"/>
     <url>/2023/02/26/%E4%BA%91%E4%B8%8A%E5%AE%B9%E7%81%BE%E4%BA%A4%E4%BB%98/</url>
     
-    <content type="html"><![CDATA[<h1 id="云上容灾交付"><a href="#云上容灾交付" class="headerlink" title="云上容灾交付"></a>云上容灾交付</h1><h2 id="同城架构容灾"><a href="#同城架构容灾" class="headerlink" title="同城架构容灾"></a>同城架构容灾</h2><p>同城容灾架构指在同城或相近的区域内，基于两个数据中心开展业务连续建设的技术架构,该架构的主要特点包括：</p><ul><li>两个中心属于一朵云架构</li><li>生产中心提供信息系统完整功能，灾备中心至少提供信息系统的关键功能</li><li>可通过全局负载均衡或域名服务提供业务流量管理</li><li>应用层支持双活和应用层主备两种模式</li><li>数据层面看，为了保持数据一致性，采用主备访问模式<br><img src="/.com//pic/1.png" alt="img"></li></ul>]]></content>
+    <content type="html"><![CDATA[<h1 id="云上容灾交付"><a href="#云上容灾交付" class="headerlink" title="云上容灾交付"></a>云上容灾交付</h1><h2 id="同城架构容灾"><a href="#同城架构容灾" class="headerlink" title="同城架构容灾"></a>同城架构容灾</h2><p>同城容灾架构指在同城或相近的区域内，基于两个数据中心开展业务连续建设的技术架构,该架构的主要特点包括：</p><ul><li>两个中心属于一朵云架构</li><li>生产中心提供信息系统完整功能，灾备中心至少提供信息系统的关键功能</li><li>可通过全局负载均衡或域名服务提供业务流量管理</li><li>应用层支持双活和应用层主备两种模式</li><li>数据层面看，为了保持数据一致性，采用主备访问模式<br><img src="/.com//pic/1.png" alt="img"><img src="/.com//02/26/%E4%BA%91%E4%B8%8A%E5%AE%B9%E7%81%BE%E4%BA%A4%E4%BB%98/1.png" class></li></ul>]]></content>
     
     
     <categories>
