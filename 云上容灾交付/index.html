@@ -24,9 +24,11 @@
 <meta property="og:description" content="云上容灾交付名词概念 RPO（Recovery Point Objective）即数据恢复点目标，主要指的是业务系统所能容忍的数据丢失量。 RTO（Recovery Time Objective）即恢复时间目标，主要指的是所能容忍的业务停止服务的最长时间，也就是从灾难发生到业务系统恢复服务功能所需要的最短时间周期。  同城架构容灾同城容灾架构指在同城或相近的区域内，基于两个数据中心开展业务连续建设">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/%E4%BA%91%E4%B8%8A%E5%AE%B9%E7%81%BE%E4%BA%A4%E4%BB%98/2.png">
-<meta property="og:image" content="http://example.com/%E4%BA%91%E4%B8%8A%E5%AE%B9%E7%81%BE%E4%BA%A4%E4%BB%98/1.png">
+<meta property="og:image" content="http://example.com/%E4%BA%91%E4%B8%8A%E5%AE%B9%E7%81%BE%E4%BA%A4%E4%BB%98/3.png">
+<meta property="og:image" content="http://example.com/%E4%BA%91%E4%B8%8A%E5%AE%B9%E7%81%BE%E4%BA%A4%E4%BB%98/4.png">
+<meta property="og:image" content="http://example.com/%E4%BA%91%E4%B8%8A%E5%AE%B9%E7%81%BE%E4%BA%A4%E4%BB%98/5.png">
 <meta property="article:published_time" content="2023-02-26T06:10:25.000Z">
-<meta property="article:modified_time" content="2023-03-01T14:04:53.319Z">
+<meta property="article:modified_time" content="2023-03-01T15:19:37.352Z">
 <meta property="article:author" content="qingjun">
 <meta property="article:tag" content="原创">
 <meta name="twitter:card" content="summary_large_image">
@@ -240,7 +242,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          315 字
+          1.2k 字
         
       </span>
     
@@ -251,7 +253,7 @@
         
         
         
-          3 分钟
+          11 分钟
         
       </span>
     
@@ -312,7 +314,23 @@
 <li>生产中心提供信息系统完整功能，灾备中心至少提供信息系统的关键功能</li>
 <li>可通过全局负载均衡或域名服务提供业务流量管理</li>
 <li>应用层支持双活和应用层主备两种模式</li>
-<li>数据层面看，为了保持数据一致性，采用主备访问模式<br><img src="1.png" srcset="/img/loading.gif" lazyload alt="1"></li>
+<li>数据层面看，为了保持数据一致性，采用主备访问模式<br><img src="3.png" srcset="/img/loading.gif" lazyload alt="3"></li>
+</ul>
+<h2 id="两地三中心容灾架构"><a href="#两地三中心容灾架构" class="headerlink" title="两地三中心容灾架构"></a>两地三中心容灾架构</h2><p>两地三中心架构，是业界比较通用的叫法，是同城容灾架构 + 异地容灾架构的组合。通常同城的两个数据中心采取同步 &#x2F; 异步的数据同步方式，同城和异地之间采取异步的数据同步方式。该架构既可以应对城市内单中心的灾难，又可以应对城市级的灾难。<br>该架构的主要特点包括：</p>
+<ul>
+<li>三个中心属于两朵云架构，同城的两中心属于一朵云，异地的一个中心属于另一朵云，默认两朵云之间，网络隔离，资源隔离，涉及跨云访问的网络，需要开通权限</li>
+<li>同城两个中心应提供信息系统的完整功能，异地一个中心应至少提供信息系统的关键功能</li>
+<li>可以通过域名服务DNS，来提供业务流量的管理</li>
+<li>从网络层看，同城的两个数据中心可采取流量双活模式，同城和异地之间则采用流量主备模式。<br>缺点：</li>
+<li>灾备中心平时不提供服务，在切换到灾备中心前，无法确定是否可以成功恢复业务系统的运行。 </li>
+<li>灾备中心平时不提供服务，灾备资源会处于闲置状态，资源闲置率较高。 </li>
+<li>平时提供服务的生产中心在单地域，当业务体量的规模接近生产中心资源上限时，无法解决单地域资源瓶颈的问题。<br><img src="4.png" srcset="/img/loading.gif" lazyload alt="4"></li>
+</ul>
+<h2 id="异地多活架构"><a href="#异地多活架构" class="headerlink" title="异地多活架构"></a>异地多活架构</h2><p>“异地多活”，又称“应用多活”，是以应用为中心的云原生容灾架构。多活是容灾技术的一种高级形态，指在同城或异地数据中心，建设一套与本地生产系统部分或全部对应的生产系统，所有数据中心内的信息系统同时对外提供服务。当灾难发生后，多活管理系统可以在分钟级内实现业务流量切换，用户可能都不会感受到灾难发生和容灾切换的过程。阿里云的“同城多活”和“异地多活”，都是典型的应用多活的实现技术。该架构定位是一套支持跨地域、跨平台的通用多活方案，该架构的主要特点包括：</p>
+<ul>
+<li>业务流量多活（BFA，business flow active）：应用多活的视角是业务，多活容灾系统具备按业务特征进行生产流量的精细化调配。</li>
+<li>同城多活（LRA，local region active）：应用是分布式系统的最小服务集合，当主中心出现问题进入容灾态时，要具备全局或局部应用的多活切换能力。</li>
+<li>异地多活（UDA，ultra distance active）：在超远距离（建议数据中心距离≥ 100km）时，业务系统仍具备较好的访问性能。进入容灾态时，RTO 和 RPO 在分钟级<br><img src="5.png" srcset="/img/loading.gif" lazyload alt="5"></li>
 </ul>
 
                 
