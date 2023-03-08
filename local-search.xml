@@ -4,13 +4,25 @@
   
   
   <entry>
-    <title></title>
+    <title>Golang</title>
     <link href="/Golang/"/>
     <url>/Golang/</url>
     
-    <content type="html"><![CDATA[<hr><p>title: Golang<br>date: 2023-03-08 22:30:48<br>tags:</p><ul><li>原创<br>categories:</li><li>运维</li></ul>]]></content>
+    <content type="html"><![CDATA[]]></content>
     
     
+    <categories>
+      
+      <category>运维</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>原创</tag>
+      
+    </tags>
     
   </entry>
   
