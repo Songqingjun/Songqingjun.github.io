@@ -26,7 +26,7 @@
 <meta property="og:image" content="http://example.com/Golang/1.png">
 <meta property="og:image" content="http://example.com/Golang/2.png">
 <meta property="article:published_time" content="2023-03-08T14:30:48.000Z">
-<meta property="article:modified_time" content="2023-03-09T15:47:14.095Z">
+<meta property="article:modified_time" content="2023-03-09T15:59:27.557Z">
 <meta property="article:author" content="qingjun">
 <meta property="article:tag" content="原创">
 <meta name="twitter:card" content="summary_large_image">
@@ -251,7 +251,7 @@
         
         
         
-          26 分钟
+          27 分钟
         
       </span>
     
@@ -335,6 +335,11 @@
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">package</span> main<br><br><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;fmt&quot;</span><br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>  &#123;<br>	fmt.Println(<span class="hljs-string">&quot;hello,qingjun&quot;</span>)<br>&#125;<br></code></pre></td></tr></table></figure>
 <p>编译源码后执行</p>
 <figure class="highlight tap"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs tap">songjunqingdeMacBook-Pro:main songjunqing$ go build hello.go <br>songjunqingdeMacBook-Pro:main songjunqing$ ls -l<br>total 3824<br>-rw-r--r-- <span class="hljs-number"> 1 </span>songjunqing  staff      <span class="hljs-number"> 23 </span><span class="hljs-number"> 3 </span><span class="hljs-number"> 9 </span>00:01 go.mod<br>-rwxr-xr-x <span class="hljs-number"> 1 </span>songjunqing  staff <span class="hljs-number"> 1946160 </span><span class="hljs-number"> 3 </span><span class="hljs-number"> 9 </span>00:02 hello<br>-rw-r--r-- <span class="hljs-number"> 1 </span>songjunqing  staff      <span class="hljs-number"> 74 </span><span class="hljs-number"> 3 </span><span class="hljs-number"> 9 </span>00:02 hello.go<br>songjunqingdeMacBook-Pro:main songjunqing$ ./hello <br>hello,qingjun<br></code></pre></td></tr></table></figure>
+<h2 id="Golang程序编写，编译，运行步骤"><a href="#Golang程序编写，编译，运行步骤" class="headerlink" title="Golang程序编写，编译，运行步骤"></a>Golang程序编写，编译，运行步骤</h2><ul>
+<li>编写：就是写源码</li>
+<li>编译：go build源码&#x3D;》生成一个二进制可执行文件</li>
+<li>运行：1.对可执行文件运行，2.go run 源码</li>
+</ul>
 <h2 id="Go程序开发的注意事项"><a href="#Go程序开发的注意事项" class="headerlink" title="Go程序开发的注意事项"></a>Go程序开发的注意事项</h2><ul>
 <li>Go源文件以“go”为扩展名</li>
 <li>Go应用程序的执行入口是main()函数</li>
