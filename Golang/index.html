@@ -23,11 +23,13 @@
 <meta property="og:site_name" content="人生如逆旅，我亦是行人">
 <meta property="og:description" content="Go 诞生原因 计算机硬件技术更新频繁，性能提高很快，目前主流的编程语言发展明显落后于硬件，不能合理利用多核多CPU的优势提升软件系统性能 软件系统复杂度越来越高，维护成本越来越高，目前缺乏一个足够简洁高效的编程语言（现有的编程语言：1、风格不统一，2、计算能力不够，3、处理大并发不够好） 企业运行维护很多c、c++的项目，虽然速度很快，但是编译速度慢，还存在内存泄漏的一系列困扰  Go 的特点">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/Golang/1.png">
 <meta property="article:published_time" content="2023-03-08T14:30:48.000Z">
-<meta property="article:modified_time" content="2023-03-09T14:57:08.703Z">
+<meta property="article:modified_time" content="2023-03-09T15:17:54.737Z">
 <meta property="article:author" content="qingjun">
 <meta property="article:tag" content="原创">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/Golang/1.png">
   
   
   
@@ -237,7 +239,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.7k 字
+          2.8k 字
         
       </span>
     
@@ -248,7 +250,7 @@
         
         
         
-          23 分钟
+          24 分钟
         
       </span>
     
@@ -358,6 +360,23 @@
 </li>
 <li>对于行注释和块注释，被注释的文字，不会被Go编译器执行</li>
 <li>块注释里面不允许有块注释嵌套</li>
+</ul>
+<h2 id="规范的代码风格"><a href="#规范的代码风格" class="headerlink" title="规范的代码风格"></a>规范的代码风格</h2><ul>
+<li>正确的注释和注释风格<ul>
+<li>Go官方推荐使用行注释来注释整个方法和语句</li>
+<li>带看Go源码</li>
+</ul>
+</li>
+<li>正确的缩进和空白<ul>
+<li>使用一次tab操作，实现缩进，默认整体向右边移动，shift+tab整体向左移动</li>
+<li>或者使用gofmt进行格式化</li>
+<li>运算符两边习惯习惯各加一个空格，比如2 + 4 * 5</li>
+</ul>
+</li>
+<li>代码风格<ul>
+<li>{}不允许换行，会报错<br><img src="1.png" srcset="/img/loading.gif" lazyload alt="1"></li>
+</ul>
+</li>
 </ul>
 
                 
