@@ -29,7 +29,7 @@
 <meta property="og:image" content="http://example.com/Golang/4.png">
 <meta property="og:image" content="http://example.com/Golang/5.png">
 <meta property="article:published_time" content="2023-03-08T14:30:48.000Z">
-<meta property="article:modified_time" content="2023-03-13T15:05:30.213Z">
+<meta property="article:modified_time" content="2023-03-13T15:20:19.815Z">
 <meta property="article:author" content="qingjun">
 <meta property="article:tag" content="原创">
 <meta name="twitter:card" content="summary_large_image">
@@ -243,7 +243,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          5.6k 字
+          6.4k 字
         
       </span>
     
@@ -254,7 +254,7 @@
         
         
         
-          47 分钟
+          53 分钟
         
       </span>
     
@@ -446,12 +446,26 @@
 </ul>
 </li>
 </ul>
-<h4 id="整数类型-1"><a href="#整数类型-1" class="headerlink" title="整数类型"></a>整数类型</h4><ul>
+<h4 id="整数类型使用细节"><a href="#整数类型使用细节" class="headerlink" title="整数类型使用细节"></a>整数类型使用细节</h4><ul>
 <li>符号和无符号，int uint的大小和系统有关</li>
 <li>Golang的整数默认声明为int型</li>
 <li>如何在程序查看某个变量的字节大小和数据类型<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">package</span> main<br><br><span class="hljs-keyword">import</span> (<br>	<span class="hljs-string">&quot;fmt&quot;</span><br>	<span class="hljs-string">&quot;unsafe&quot;</span><br>)<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>	<span class="hljs-comment">//如何查看某个变量的占用字节大小和数据类型，</span><br>	<span class="hljs-keyword">var</span> n2 <span class="hljs-type">int64</span> = <span class="hljs-number">10</span><br>	fmt.Printf(<span class="hljs-string">&quot;n2的类型为 %T n2占用的字节数是 %d&quot;</span>, n2, unsafe.Sizeof(n2))<br>&#125;<br><br>结果：n2的类型为 <span class="hljs-type">int64</span> n2占用的字节数是 <span class="hljs-number">8</span><br></code></pre></td></tr></table></figure></li>
 <li>Golang程序中整型变量在使用时，遵守保小不保大原则，在保证程序正确运行下，尽量使用占用空间小的数据类型</li>
-<li>bit：计算机中的最小存储单位，byte：计算机中基本存储单元</li>
+<li>bit：计算机中的最小存储单位，byte：计算机中基本存储单元 1byte &#x3D; 8bit</li>
+</ul>
+<h4 id="小数类型、浮点型"><a href="#小数类型、浮点型" class="headerlink" title="小数类型、浮点型"></a>小数类型、浮点型</h4><ul>
+<li>基本介绍<br>小数类型就是用于存放小数的，比如1.2 0.23 -1.92</li>
+<li>案例演示<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">package</span> main<br><br><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;fmt&quot;</span><br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>	<span class="hljs-keyword">var</span> price <span class="hljs-type">float32</span> = <span class="hljs-number">89.12</span><br>	fmt.Println(<span class="hljs-string">&quot;price = &quot;</span>, price)<br>&#125;<br></code></pre></td></tr></table></figure></li>
+<li>小数类型分类<ul>
+<li>float32 的浮点数的最大范围约为 3.4e38，可以使用常量定义：math.MaxFloat32。</li>
+<li>loat64 的浮点数的最大范围约为 1.8e308，可以使用一个常量定义：math.MaxFloat64。<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">package</span> main<br><br><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;fmt&quot;</span><br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br><br>	<span class="hljs-keyword">var</span> num1 <span class="hljs-type">float32</span> = <span class="hljs-number">-0.00089</span><br>	<span class="hljs-keyword">var</span> num2 <span class="hljs-type">float64</span> = <span class="hljs-number">-789232.09</span><br>	fmt.Println(<span class="hljs-string">&quot;num1=&quot;</span>, num1, <span class="hljs-string">&quot;num2=&quot;</span>, num2)<br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>说明<ul>
+<li>关于浮点数在机器中存放形式的简单说明，浮点数&#x3D;符号位+指数位+尾数位，说明：浮点数都是有符号的</li>
+<li>尾数部分可能丢失，造成精度损失,float64精度比float32要准确<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">package</span> main<br><br><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;fmt&quot;</span><br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br><br>	<span class="hljs-keyword">var</span> num1 <span class="hljs-type">float32</span> = <span class="hljs-number">-123.0008900001</span><br>	<span class="hljs-keyword">var</span> num2 <span class="hljs-type">float64</span> = <span class="hljs-number">-123.0008900001</span><br>	fmt.Println(<span class="hljs-string">&quot;num1=&quot;</span>, num1, <span class="hljs-string">&quot;num2=&quot;</span>, num2)<br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
 </ul>
 
                 
