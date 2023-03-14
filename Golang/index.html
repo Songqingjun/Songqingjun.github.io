@@ -29,7 +29,7 @@
 <meta property="og:image" content="http://example.com/Golang/4.png">
 <meta property="og:image" content="http://example.com/Golang/5.png">
 <meta property="article:published_time" content="2023-03-08T14:30:48.000Z">
-<meta property="article:modified_time" content="2023-03-14T15:24:35.608Z">
+<meta property="article:modified_time" content="2023-03-14T15:32:26.056Z">
 <meta property="article:author" content="qingjun">
 <meta property="article:tag" content="原创">
 <meta name="twitter:card" content="summary_large_image">
@@ -243,7 +243,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          7.9k 字
+          8.3k 字
         
       </span>
     
@@ -254,7 +254,7 @@
         
         
         
-          66 分钟
+          70 分钟
         
       </span>
     
@@ -486,7 +486,25 @@
 <li>Go语言的字符使用utf-8编码</li>
 <li>在GO中，字符的本质是一个整数，直接输出时，是该字符对应的UTF-8编码的码值</li>
 <li>可以直接给某个变量附一个数字，然后按格式化输出时会输出该数字对应的unicode字符</li>
-<li>字符类型是可以进行运算的，相当于一个整数<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">package</span> main<br><br><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;fmt&quot;</span><br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br><br>	<span class="hljs-comment">//字符类型的加法运算</span><br>	<span class="hljs-keyword">var</span> c1 = <span class="hljs-number">10</span> + <span class="hljs-string">&#x27;a&#x27;</span><br>	fmt.Println(<span class="hljs-string">&quot;c1=&quot;</span>, c1)<br>&#125;<br></code></pre></td></tr></table></figure></li>
+<li>字符类型是可以进行运算的，相当于一个整数<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">package</span> main<br><br><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;fmt&quot;</span><br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br><br>	<span class="hljs-comment">//字符类型的加法运算</span><br>	<span class="hljs-keyword">var</span> c1 = <span class="hljs-number">10</span> + <span class="hljs-string">&#x27;a&#x27;</span><br>	fmt.Println(<span class="hljs-string">&quot;c1=&quot;</span>, c1)<br>&#125;<br></code></pre></td></tr></table></figure>
+字符类型的本质</li>
+<li>字符型存储到计算机中，需要将字符对应的码值找出来，<ul>
+<li>存储：字符-》对应码值-》二进制-》存储</li>
+<li>读取：二进制-》码值&#x3D;》字符&#x3D;》读取</li>
+</ul>
+</li>
+<li>字符和码值的对应关系是通过字符编码表决定的</li>
+<li>Go语言的编码都统一成了utf-8，和其他编程语言来说，非常方便很统一，没有编码乱的困扰</li>
+</ul>
+<h4 id="布尔类型：bool"><a href="#布尔类型：bool" class="headerlink" title="布尔类型：bool"></a>布尔类型：bool</h4><p>基本介绍</p>
+<ul>
+<li>布尔类型也叫bool类型，bool类型数据只允许取值true和false</li>
+<li>bool类型占一个字节</li>
+<li>bool类型适用于逻辑运算，一般用于程序流程控制<ul>
+<li>if条件控制语句</li>
+<li>for循环控制语句<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">package</span> main<br><br><span class="hljs-keyword">import</span> (<br>	<span class="hljs-string">&quot;fmt&quot;</span><br>	<span class="hljs-string">&quot;unsafe&quot;</span><br>)<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br><br>	<span class="hljs-keyword">var</span> b = <span class="hljs-literal">false</span><br>	fmt.Println(<span class="hljs-string">&quot;b=&quot;</span>, b)<br><br>	fmt.Println(<span class="hljs-string">&quot;b的占用空间=&quot;</span>, unsafe.Sizeof(b))<br>&#125;<br><br>输出结果<br>b= <span class="hljs-literal">false</span><br>b的占用空间= <span class="hljs-number">1</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
 </ul>
 
                 
