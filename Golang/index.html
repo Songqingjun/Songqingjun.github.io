@@ -29,7 +29,7 @@
 <meta property="og:image" content="http://example.com/Golang/4.png">
 <meta property="og:image" content="http://example.com/Golang/5.png">
 <meta property="article:published_time" content="2023-03-08T14:30:48.000Z">
-<meta property="article:modified_time" content="2023-03-14T15:13:00.717Z">
+<meta property="article:modified_time" content="2023-03-14T15:24:35.608Z">
 <meta property="article:author" content="qingjun">
 <meta property="article:tag" content="原创">
 <meta name="twitter:card" content="summary_large_image">
@@ -243,7 +243,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          7.5k 字
+          7.9k 字
         
       </span>
     
@@ -254,7 +254,7 @@
         
         
         
-          63 分钟
+          66 分钟
         
       </span>
     
@@ -480,6 +480,14 @@
 <h4 id="字符类型（char）"><a href="#字符类型（char）" class="headerlink" title="字符类型（char）"></a>字符类型（char）</h4><p>Golang中没有专门的字符类型，如果要存储单个字符（字母），一般使用byte来保存<br>字符串就是一串固定长度的字符连接起来的字符序列，go的字符串是由单个字节连接起来的，对于传统的字符串是由字符组成，而Go的字符串不同，它是由字节组成的</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">package</span> main<br><br><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;fmt&quot;</span><br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br><br>	<span class="hljs-keyword">var</span> c1 <span class="hljs-type">byte</span> = <span class="hljs-string">&#x27;a&#x27;</span><br>	<span class="hljs-keyword">var</span> c2 <span class="hljs-type">byte</span> = <span class="hljs-string">&#x27;0&#x27;</span><br>	<span class="hljs-comment">//当我们直接输出byte值，就是输出了对应的字符的码值</span><br>	fmt.Println(<span class="hljs-string">&quot;c1=&quot;</span>, c1)<br>	fmt.Println(<span class="hljs-string">&quot;c2=&quot;</span>, c2)<br>	<span class="hljs-comment">//如果我们希望输出对应字符，需要使用格式化输出</span><br>	fmt.Printf(<span class="hljs-string">&quot;c1=%c c2=%c\n&quot;</span>, c1, c2)<br><br>	<span class="hljs-keyword">var</span> c4 <span class="hljs-type">int</span> = <span class="hljs-string">&#x27;宋&#x27;</span><br>	fmt.Printf(<span class="hljs-string">&quot;c4=%c c4对应的码值=%d&quot;</span>, c4, c4)<br>&#125;<br></code></pre></td></tr></table></figure>
 <p>说明<br>-	如果我们保存的字符在ASCII表，直接可以保存到byte<br>-	如果我们保存的字符对应的码值大于255，我们可以考虑使用int类型保存<br>-	如果我们需要安装字符的方式输出，这是我们需要格式化输出fmt.Printf(“c1&#x3D;%c）</p>
+<h4 id="字符使用细节"><a href="#字符使用细节" class="headerlink" title="字符使用细节"></a>字符使用细节</h4><ul>
+<li>字符常量是用单引号(‘’)括起来的单个字符，例如 	var c1 byte &#x3D; ‘a’</li>
+<li>Go中允许使用转义字符‘\’来将其后的字符转变为特殊字符型常量，例如 var c1 char &#x3D; ‘\n’</li>
+<li>Go语言的字符使用utf-8编码</li>
+<li>在GO中，字符的本质是一个整数，直接输出时，是该字符对应的UTF-8编码的码值</li>
+<li>可以直接给某个变量附一个数字，然后按格式化输出时会输出该数字对应的unicode字符</li>
+<li>字符类型是可以进行运算的，相当于一个整数<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">package</span> main<br><br><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;fmt&quot;</span><br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br><br>	<span class="hljs-comment">//字符类型的加法运算</span><br>	<span class="hljs-keyword">var</span> c1 = <span class="hljs-number">10</span> + <span class="hljs-string">&#x27;a&#x27;</span><br>	fmt.Println(<span class="hljs-string">&quot;c1=&quot;</span>, c1)<br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ul>
 
                 
               </div>
