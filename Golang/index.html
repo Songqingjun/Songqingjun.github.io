@@ -29,7 +29,7 @@
 <meta property="og:image" content="http://example.com/Golang/4.png">
 <meta property="og:image" content="http://example.com/Golang/5.png">
 <meta property="article:published_time" content="2023-03-08T14:30:48.000Z">
-<meta property="article:modified_time" content="2023-03-15T14:07:50.202Z">
+<meta property="article:modified_time" content="2023-03-15T14:29:13.186Z">
 <meta property="article:author" content="qingjun">
 <meta property="article:tag" content="原创">
 <meta name="twitter:card" content="summary_large_image">
@@ -243,7 +243,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          9.7k 字
+          10k 字
         
       </span>
     
@@ -254,7 +254,7 @@
         
         
         
-          81 分钟
+          87 分钟
         
       </span>
     
@@ -517,6 +517,27 @@
 </ul>
 </li>
 <li>字符串的拼接方式<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">package</span> main<br><br><span class="hljs-keyword">import</span> (<br>	<span class="hljs-string">&quot;fmt&quot;</span><br>)<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>	<span class="hljs-keyword">var</span> str = <span class="hljs-string">&quot;hello &quot;</span> + <span class="hljs-string">&quot;world&quot;</span><br>	str += <span class="hljs-string">&quot; haha!&quot;</span><br>	fmt.Println(str)<br>&#125;<br>输出结果<br>hello world haha!<br><span class="hljs-string">``</span><span class="hljs-string">``</span><br><br>- 当拼接很长时间，可以分行写,需要把加号放在上面，不能放在下一行<br><br><span class="hljs-string">``</span><span class="hljs-string">`go</span><br><span class="hljs-string">package main</span><br><span class="hljs-string"></span><br><span class="hljs-string">import (</span><br><span class="hljs-string">	&quot;fmt&quot;</span><br><span class="hljs-string">)</span><br><span class="hljs-string"></span><br><span class="hljs-string">func main() &#123;</span><br><span class="hljs-string">	//当拼接很长时间，可以分行写</span><br><span class="hljs-string">	var str = &quot;hello&quot; +</span><br><span class="hljs-string">		&quot;hello&quot; +</span><br><span class="hljs-string">		&quot;hello&quot; +</span><br><span class="hljs-string">		&quot;hello&quot; +</span><br><span class="hljs-string">		&quot;hello&quot; +</span><br><span class="hljs-string">		&quot;hello&quot; +</span><br><span class="hljs-string">		&quot;hello&quot;</span><br><span class="hljs-string">	fmt.Println(str)</span><br><span class="hljs-string">&#125;</span><br><span class="hljs-string">输出结果</span><br><span class="hljs-string">hellohellohellohellohellohellohello</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="基本数据类型默认值"><a href="#基本数据类型默认值" class="headerlink" title="基本数据类型默认值"></a>基本数据类型默认值</h4><ul>
+<li>整形如int8、byte、int16、uint、uintprt等，默认值为0。</li>
+<li>浮点类型如float32、float64，默认值为0。</li>
+<li>布尔类型bool的默认值为false。</li>
+<li>复数类型如complex64、complex128，默认值为0+0i。</li>
+<li>字符串string的默认值为”“。</li>
+<li>错误类型error的默认值为nil。</li>
+<li>对于一些复合类型，如指针、切片、字典、通道、接口，默认值为nil。而数组的默认值要根据其数据类型来确定。例如：var a [4]int，其默认值为[0 0 0 0]。</li>
+</ul>
+<h4 id="基本数据类型转换"><a href="#基本数据类型转换" class="headerlink" title="基本数据类型转换"></a>基本数据类型转换</h4><ul>
+<li>介绍<ul>
+<li>Golang和java\C不同，Go在不同类型的变量之间赋值时需要显示转换，也就是说Golang中的数据类型不能自动转换</li>
+</ul>
+</li>
+<li>基本语法<ul>
+<li>表达式T(v)将值v转换为类型T</li>
+<li>T:就是数据类型，比如int32，int64，float32等等</li>
+<li>v：就是需要转换的变量<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">package</span> main<br><br><span class="hljs-keyword">import</span> (<br>	<span class="hljs-string">&quot;fmt&quot;</span><br>)<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>	<span class="hljs-keyword">var</span> i <span class="hljs-type">int32</span> = <span class="hljs-number">100</span><br>	<span class="hljs-comment">//希望将转为float类型</span><br>	<span class="hljs-keyword">var</span> n1 <span class="hljs-type">float32</span> = <span class="hljs-type">float32</span>(i)<br>	<span class="hljs-keyword">var</span> n2 <span class="hljs-type">int8</span> = <span class="hljs-type">int8</span>(i)<br>	<span class="hljs-keyword">var</span> n3 <span class="hljs-type">int64</span> = <span class="hljs-type">int64</span>(i)<br>	fmt.Printf(<span class="hljs-string">&quot;i=%v n1=%v n2 =%v n3 =%v&quot;</span>, i, n1, n2, n3)<br>&#125;<br>输出结果<br>i=<span class="hljs-number">100</span> n1=<span class="hljs-number">100</span> n2 =<span class="hljs-number">100</span> n3 =<span class="hljs-number">100</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
 </ul>
 
                 
