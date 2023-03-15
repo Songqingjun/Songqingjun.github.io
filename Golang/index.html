@@ -29,7 +29,7 @@
 <meta property="og:image" content="http://example.com/Golang/4.png">
 <meta property="og:image" content="http://example.com/Golang/5.png">
 <meta property="article:published_time" content="2023-03-08T14:30:48.000Z">
-<meta property="article:modified_time" content="2023-03-15T14:31:32.328Z">
+<meta property="article:modified_time" content="2023-03-15T15:31:50.184Z">
 <meta property="article:author" content="qingjun">
 <meta property="article:tag" content="原创">
 <meta name="twitter:card" content="summary_large_image">
@@ -243,7 +243,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          10k 字
+          12k 字
         
       </span>
     
@@ -254,7 +254,7 @@
         
         
         
-          88 分钟
+          101 分钟
         
       </span>
     
@@ -541,7 +541,22 @@
 <li>细节说明<ul>
 <li>Go中，数据类型的转换可以是从表示范围小到大，也可以从大到小</li>
 <li>被转换的是变量存储的数据（即值），变量本身的数据类型并没有什么变化</li>
-<li>在转换中，比如将int64转为int8，编译时不会报错，只是转换的结果是按照移除处理，和我们希望的结果不一样</li>
+<li>在转换中，比如将int64转为int8，编译时不会报错，只是转换的结果是按照移除处理，和我们希望的结果不一样<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">package</span> main<br><br><span class="hljs-keyword">import</span> (<br>	<span class="hljs-string">&quot;fmt&quot;</span><br>)<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>	<span class="hljs-keyword">var</span> i <span class="hljs-type">int64</span> = <span class="hljs-number">1000000</span><br><br>	<span class="hljs-keyword">var</span> j <span class="hljs-type">int8</span> = <span class="hljs-type">int8</span>(i)<br><br>	fmt.Println(<span class="hljs-string">&quot;j=&quot;</span>, j)<br><br>&#125;<br>输出结果：<span class="hljs-number">64</span><br>和我们希望的结果不一样，数据溢出了<br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<h4 id="基本数据类型和string的转换"><a href="#基本数据类型和string的转换" class="headerlink" title="基本数据类型和string的转换"></a>基本数据类型和string的转换</h4><ul>
+<li>介绍<ul>
+<li>在程序开发中国，我们需要将基本数据类型转为string类型或者将string类型转成基本数据类型</li>
+</ul>
+</li>
+<li>基本类型转string类型<ul>
+<li>方式1：fmt.Sprintf(“%参数”,表达式)<ul>
+<li>参数需要和表达式的数据类型相匹配</li>
+<li>fmt.Sprintf（）会返回转换后的字符串<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">package</span> main<br><br><span class="hljs-keyword">import</span> (<br>	<span class="hljs-string">&quot;fmt&quot;</span><br>)<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>	<span class="hljs-keyword">var</span> num1 <span class="hljs-type">int</span> = <span class="hljs-number">99</span><br>	<span class="hljs-keyword">var</span> num2 <span class="hljs-type">float64</span> = <span class="hljs-number">23.54</span><br>	<span class="hljs-keyword">var</span> b <span class="hljs-type">bool</span> = <span class="hljs-literal">true</span><br>	<span class="hljs-keyword">var</span> myChar <span class="hljs-type">byte</span> = <span class="hljs-string">&#x27;h&#x27;</span><br><br>	<span class="hljs-keyword">var</span> str <span class="hljs-type">string</span><br>	<span class="hljs-comment">//第一种方式来转换</span><br>	str = fmt.Sprintf(<span class="hljs-string">&quot;%d&quot;</span>, num1)<br>	fmt.Printf(<span class="hljs-string">&quot;str type %T str=%q\n&quot;</span>, str, str)<br><br>	str = fmt.Sprintf(<span class="hljs-string">&quot;%f&quot;</span>, num2)<br>	fmt.Printf(<span class="hljs-string">&quot;str type %T str=%q\n&quot;</span>, str, str)<br><br>	str = fmt.Sprintf(<span class="hljs-string">&quot;%t&quot;</span>, b)<br>	fmt.Printf(<span class="hljs-string">&quot;str type %T str=%q\n&quot;</span>, str, str)<br><br>	str = fmt.Sprintf(<span class="hljs-string">&quot;%c&quot;</span>, myChar)<br>	fmt.Printf(<span class="hljs-string">&quot;str type %T str=%q\n&quot;</span>, str, str)<br>&#125;<br>输出结果<br>str <span class="hljs-keyword">type</span> <span class="hljs-type">string</span> str=<span class="hljs-string">&quot;99&quot;</span><br>str <span class="hljs-keyword">type</span> <span class="hljs-type">string</span> str=<span class="hljs-string">&quot;23.540000&quot;</span><br>str <span class="hljs-keyword">type</span> <span class="hljs-type">string</span> str=<span class="hljs-string">&quot;true&quot;</span><br>str <span class="hljs-keyword">type</span> <span class="hljs-type">string</span> str=<span class="hljs-string">&quot;h&quot;</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>方式2：使用strconv包的函数<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">package</span> main<br><br><span class="hljs-keyword">import</span> (<br>	<span class="hljs-string">&quot;fmt&quot;</span><br>	<span class="hljs-string">&quot;strconv&quot;</span><br>)<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>	<span class="hljs-keyword">var</span> num1 <span class="hljs-type">int</span> = <span class="hljs-number">99</span><br>	<span class="hljs-keyword">var</span> num2 <span class="hljs-type">float64</span> = <span class="hljs-number">23.54</span><br>	<span class="hljs-keyword">var</span> b <span class="hljs-type">bool</span> = <span class="hljs-literal">true</span><br><br>	<span class="hljs-keyword">var</span> str <span class="hljs-type">string</span><br>	<span class="hljs-comment">//第二种方式来转换</span><br>	str = strconv.FormatInt(<span class="hljs-type">int64</span>(num1), <span class="hljs-number">10</span>)<br>	fmt.Printf(<span class="hljs-string">&quot;str tyoe %T str=%q\n&quot;</span>, str, str)<br><br>	str = strconv.FormatFloat(num2, <span class="hljs-string">&#x27;f&#x27;</span>, <span class="hljs-number">10</span>, <span class="hljs-number">64</span>)<br>	<span class="hljs-comment">//说明‘f’格式10，表示小数位保留10位，64：表示小数是float64</span><br>	fmt.Printf(<span class="hljs-string">&quot;str tyoe %T str=%q\n&quot;</span>, str, str)<br><br>	str = strconv.FormatBool(b)<br>	fmt.Printf(<span class="hljs-string">&quot;str tyoe %T str=%q\n&quot;</span>, str, str)<br>&#125;<br>输出结果<br>str tyoe <span class="hljs-type">string</span> str=<span class="hljs-string">&quot;99&quot;</span><br>str tyoe <span class="hljs-type">string</span> str=<span class="hljs-string">&quot;23.5400000000&quot;</span><br>str tyoe <span class="hljs-type">string</span> str=<span class="hljs-string">&quot;true&quot;</span><br></code></pre></td></tr></table></figure></li>
 </ul>
 </li>
 </ul>
