@@ -29,7 +29,7 @@
 <meta property="og:image" content="http://example.com/Golang/4.png">
 <meta property="og:image" content="http://example.com/Golang/5.png">
 <meta property="article:published_time" content="2023-03-08T14:30:48.000Z">
-<meta property="article:modified_time" content="2023-03-15T15:55:18.621Z">
+<meta property="article:modified_time" content="2023-03-20T15:01:01.884Z">
 <meta property="article:author" content="qingjun">
 <meta property="article:tag" content="原创">
 <meta name="twitter:card" content="summary_large_image">
@@ -254,7 +254,7 @@
         
         
         
-          109 分钟
+          112 分钟
         
       </span>
     
@@ -564,7 +564,20 @@
 <figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs reasonml">func <span class="hljs-constructor">FormatBool(<span class="hljs-params">b</span> <span class="hljs-params">bool</span>)</span> <span class="hljs-built_in">string</span><br>func <span class="hljs-constructor">FormatFloat(<span class="hljs-params">f</span> <span class="hljs-params">float64</span>, <span class="hljs-params">fmt</span> <span class="hljs-params">byte</span>, <span class="hljs-params">prec</span>, <span class="hljs-params">bitSize</span> <span class="hljs-params">int</span>)</span> <span class="hljs-built_in">string</span><br>func <span class="hljs-constructor">FormatInt(<span class="hljs-params">i</span> <span class="hljs-params">int64</span>, <span class="hljs-params">base</span> <span class="hljs-params">int</span>)</span> <span class="hljs-built_in">string</span><br></code></pre></td></tr></table></figure>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">package</span> main<br><br><span class="hljs-keyword">import</span> (<br>	<span class="hljs-string">&quot;fmt&quot;</span><br>	<span class="hljs-string">&quot;strconv&quot;</span><br>)<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>	<span class="hljs-keyword">var</span> str <span class="hljs-type">string</span> = <span class="hljs-string">&quot;true&quot;</span><br>	<span class="hljs-keyword">var</span> b <span class="hljs-type">bool</span><br>	b, _ = strconv.ParseBool(str)<br>	fmt.Printf(<span class="hljs-string">&quot;b type %T b=%v\n&quot;</span>, b, b)<br><br>	<span class="hljs-keyword">var</span> str2 <span class="hljs-type">string</span> = <span class="hljs-string">&quot;123456&quot;</span><br>	<span class="hljs-keyword">var</span> n1 <span class="hljs-type">int64</span><br>	n1, _ = strconv.ParseInt(str2, <span class="hljs-number">10</span>, <span class="hljs-number">64</span>)<br>	fmt.Printf(<span class="hljs-string">&quot;n1 type %T n1=%v\n&quot;</span>, n1, n1)<br><br>	<span class="hljs-keyword">var</span> str3 <span class="hljs-type">string</span> = <span class="hljs-string">&quot;123.456&quot;</span><br>	<span class="hljs-keyword">var</span> f1 <span class="hljs-type">float64</span><br>	f1, _ = strconv.ParseFloat(str3, <span class="hljs-number">64</span>)<br>	fmt.Printf(<span class="hljs-string">&quot;f1 type %T f1 = %v\n&quot;</span>, f1, f1)<br>&#125;<br>输出结果<br>b <span class="hljs-keyword">type</span> <span class="hljs-type">bool</span> b=<span class="hljs-literal">true</span><br>n1 <span class="hljs-keyword">type</span> <span class="hljs-type">int64</span> n1=<span class="hljs-number">123456</span><br>f1 <span class="hljs-keyword">type</span> <span class="hljs-type">float64</span> f1 = <span class="hljs-number">123.456</span><br></code></pre></td></tr></table></figure>
 <p>注意事项<br>在将String的转成基本数据类型的时候，要确保String类型能够转成有效的数据，比如我们可以把“123”转为一个整数，但是不能把“hello”转成一个整数，这样的话，GO直接把其转为0，其他类型也一样，float&#x3D;&#x3D;》0 bool&#x3D;&#x3D;》false</p>
-<h4 id="指针"><a href="#指针" class="headerlink" title="指针"></a>指针</h4>
+<h4 id="指针"><a href="#指针" class="headerlink" title="指针"></a>指针</h4><p>基本介绍</p>
+<ul>
+<li>基本数据类型，变量存的就是值，也叫值类型</li>
+<li>获取变量的地址，用&amp;，var num int，获取num的地址：&amp;num</li>
+<li>指针类型，变量存的是一个地址，这个地址指向的空间存的才是值，比如：var ptr *int &#x3D; &amp;num<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">package</span> main<br><br><span class="hljs-keyword">import</span> (<br>	<span class="hljs-string">&quot;fmt&quot;</span><br>)<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>	<span class="hljs-comment">//基本数据类型在内存的布局</span><br>	<span class="hljs-keyword">var</span> i <span class="hljs-type">int</span> = <span class="hljs-number">10</span><br>	fmt.Println(<span class="hljs-string">&quot;i的地址=&quot;</span>, &amp;i)<br>&#125;<br>输出结果：i的地址= <span class="hljs-number">0xc00001a080</span><br></code></pre></td></tr></table></figure></li>
+<li>获取指针类型所指向的值，使用：*，比如： var <em>ptr int，使用</em>ptr获取p指向的值</li>
+<li>举例说明<ul>
+<li>var num int &#x3D;1</li>
+<li>var i&#x3D; 999</li>
+<li>var ptr *int &#x3D; &amp;i</li>
+</ul>
+</li>
+</ul>
+
                 
               </div>
             
