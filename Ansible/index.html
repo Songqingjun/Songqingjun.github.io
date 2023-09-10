@@ -24,7 +24,7 @@
 <meta property="og:description" content="介绍Ansible是一个开源的自动化工具，用于自动化应用程序部署、配置管理和任务执行。它是基于Python开发的，使用简单而且易于上手。Ansible的工作原理是通过SSH协议连接到远程主机，并通过Playbooks(剧本)来定义自动化任务。Playbooks是由YAML语言编写的文件，其中包含了要执行的任务、主机列表和变量等信息。Ansible的主要特点包括:  简单易用:Ansible的语法简">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-09-10T09:19:29.000Z">
-<meta property="article:modified_time" content="2023-09-10T10:02:48.025Z">
+<meta property="article:modified_time" content="2023-09-10T10:29:39.044Z">
 <meta property="article:author" content="qingjun">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -345,7 +345,7 @@
 <li>-a是一个命令行选项，用于质地感模块执行时的参数 (arguments)</li>
 <li>它将用于讲一个参数传递给Ansible模块，以便在远程主机上执行特定任务。指定目录和密码生效<ul>
 <li>例子: ansible -i inventory&#x2F;glocaldev&#x2F;hosts obproxy -m copy -a “src&#x3D;&#x2F;home&#x2F;bootstrap&#x2F;bootstrapimages.tar dest&#x3D;&#x2F;tmp” –ask-pass<ul>
-<li>-i inventory&#x2F;glocaldev&#x2F;hosts: 这个选项指定了主机清单文件的路径。请确保该文件中包含了您希望与之通信的obproxy 主机信息。如果该文件不存在或没有正确配置相关主机信息，命令可能会失败。</li>
+<li>1.-i inventory&#x2F;glocaldev&#x2F;hosts: 这个选项指定了主机清单文件的路径。请确保该文件中包含了您希望与之通信的obproxy 主机信息。如果该文件不存在或没有正确配置相关主机信息，命令可能会失败。</li>
 <li>2.obproxy:这个参数指定了目标主机或主机组的名称。请确保在您的主机清单文件中存在名为 obproxy 的主机或主机组。</li>
 <li>3.-m copy: 这个选项表示使用 Ansible 的 copy 模块来复制文件。如果您想将文件从主控节点复制到 obproxy 主机上，请确保主控节点可以访问 obproxy 主机。</li>
 <li>4.-a”src&#x3D;&#x2F;home&#x2F;bootstrap&#x2F;bootstrap-images.tar dest&#x3D;&#x2F;tmp”: 这个选项指定了 copy 模块的参数。它表示将&#x2F;home&#x2F;bootstrap&#x2F;bootstrap-images.tar 文件从主控节点复制到 obproxy 主机的 &#x2F;tmp 目录下。请确保源文件和目标目录的路径是正确的，并且有适当的权限。</li>
